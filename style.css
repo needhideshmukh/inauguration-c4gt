@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+html,
+body {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #040a22;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+li {
+  list-style: none;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #040a22;
+}
+
+/* BACKGROUND ANIMATION */
+.gradient {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  filter: blur(50px);
+  background-image: linear-gradient(#4ddc9e, #5b37eb, #f1307e);
+  animation: rotate 10s cubic-bezier(0.8, 0.2, 0.2, 0.8) alternate infinite;
+  border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* SLIDE ANIMATION */
+.swiper-slide-active [data-animate] {
+  opacity: 1;
+  transform: none;
+}
+
+.swiper-slide-active .title {
+  transition-delay: 0.6s;
+}
+
+.swiper-slide-active .songs {
+  transition-delay: 1s;
+}
+
+.swiper-slide-active .overview {
+  transition-delay: 1.4s;
+}
+
+[data-animate] {
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+[data-animate="bottom"] {
+  transform: translate3d(0, 15px, 0);
+}
+
+/* SCROLLBAR */
+.sidebar-body::-webkit-scrollbar,
+.song-list-body::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+.sidebar-body::-webkit-scrollbar-track,
+.song-list-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.375rem rgb(79, 78, 78);
+  border-radius: 0.8rem;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb,
+.song-list-body::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0.375rem rgba(238, 238, 238, 0.9);
+  outline: none;
+  border-radius: 0.8rem;
+}
+
+/* FORM STYLING */
+.form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  padding: 50px 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.095);
+  box-shadow: inset 2.01px -2.01px 20px rgba(214, 214, 214, 0.17),
+    inset -3.01333px 3.01333px 3.01333px rgba(255, 255, 255, 0.39);
+  backdrop-filter: blur(70px);
+  z-index: 1;
+}
+
+.form-content {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.095);
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+::-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px; /* Adjust margin as needed */
+}
+
+.gradient-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-size: 200% 200%;
+}
+
+.gradient-button:hover {
+  background-position: right center;
+}

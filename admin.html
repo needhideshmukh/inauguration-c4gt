@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Samagra Event</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="gradient"></div>
+            <div class="form-container">
+              <form class="form-content">
+                <div class="form-group">
+                  <label for="eventName" id="messageInput"></label>
+                  <input
+                    type="text"
+                    id="eventName"
+                    name="eventName"
+                    placeholder="Event Name"
+                    required
+                  />
+                </div>
+                <br />
+
+                <div class="form-group">
+                  <label for="guestCount" id="guestCount"></label>
+                  <input
+                    type="number"
+                    id="guestCount"
+                    name="guestCount"
+                    placeholder="Guest Count"
+                    required
+                  />
+                </div>
+                <br />
+
+                <div class="form-group">
+                  <label for="guestEmail" id="guestEmail"></label>
+                  <input
+                    type="email"
+                    id="guestEmail"
+                    name="guestEmail"
+                    placeholder="Guest Email"
+                    required
+                  />
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                  <label for="adminHash" id="adminHash"></label>
+                  <input
+                    type="text"
+                    id="adminHash"
+                    name="adminHash"
+                    placeholder="Admin Hash"
+                    required
+                  />
+                </div>
+
+                <div class="button-container">
+                  <button type="submit" class="gradient-button" id="logButton">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../dist/bundle.js"></script>
+
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        // Ensure Browserify has loaded the modules
+        const submitIdentifier = window.submitIdentifier
+        const eventManager = window.eventManager
+
+        // Get references to the input field and buttons
+        const logButton = document.getElementById("logButton")
+        const guestCount = document.getElementById("guestCount")
+        const guestEmail = document.getElementById("guestEmail")
+
+        const watchButton = document.getElementById("watchButton")
+
+        // Add a click event listener to the log button
+        logButton.addEventListener("click", () => {
+          const identifier = messageInput.value
+          const guestCount = guestCount.value
+          const guestEmail = guestEmail.value
+          submitIdentifier(identifier)
+        })
+      })
+    </script>
+  </body>
+</html>
