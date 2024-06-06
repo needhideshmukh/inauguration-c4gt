@@ -26,6 +26,11 @@ body {
   padding: 1% 5%;
 }
 
+@font-face {
+  font-family: "SAMAN__";
+  src: url("./SAMAN__.TTF") format("TrueType");
+}
+
 .diyas-container {
   display: flex;
   justify-content: center;
@@ -60,7 +65,7 @@ img,
 
 .background {
   width: 100%;
-  height: 50%;
+  height: 0%;
   border-radius: 0 0 20% 20%;
 }
 
@@ -107,7 +112,7 @@ img,
 
 .diya {
   height: 65%;
-  width: 100%;
+  width: 80%;
   position: absolute;
   top: 53%;
   left: 50%;
@@ -115,8 +120,8 @@ img,
 }
 
 .diya2 {
-  height: 65%;
-  width: 100%;
+  height: 50%;
+  width: 80%;
   position: absolute;
   top: 53%;
   left: 50%;
@@ -181,7 +186,7 @@ img,
 
 .flame__fire--outer {
   height: 40%;
-  width: 30%;
+  width: 40%;
   bottom: 8%;
   background-color: var(--flame-primary);
   border-radius: 2% 100% 0 100%;
@@ -189,8 +194,24 @@ img,
 
 .flame__fire--inner {
   height: 20%;
-  width: 15%;
+  width: 20%;
   bottom: 4%;
+  background-color: var(--flame-secondary);
+  border-radius: 10% 100% 0 100%;
+}
+
+.flame__fire--outer2 {
+  height: 40%;
+  width: 30%;
+  bottom: 10%;
+  background-color: var(--flame-primary);
+  border-radius: 2% 100% 0 100%;
+}
+
+.flame__fire--inner2 {
+  height: 20%;
+  width: 15%;
+  bottom: 6%;
   background-color: var(--flame-secondary);
   border-radius: 10% 100% 0 100%;
 }
@@ -302,6 +323,11 @@ img,
   justify-content: center;
 }
 
+.eventHeading {
+  font-size: 100px;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .container2 {
     display: none;
@@ -328,5 +354,9 @@ img,
     bottom: 4%;
     background-color: var(--flame-secondary);
     border-radius: 10% 100% 0 100%;
+  }
+
+  .eventHeading {
+    font-size: 50px;
   }
 }

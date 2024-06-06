@@ -65,8 +65,33 @@
                   />
                 </div>
 
+                <!-- ----------------------- -->
+                <br />
+
+                <div class="form-group">
+                  <select id="dropdown" onchange="selectOption()">
+                    <!-- Default options -->
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="customInput"
+                    style="display: none"
+                    placeholder="Type a custom option"
+                  />
+                </div>
+
+                <!------------------------------->
+
                 <div class="button-container">
-                  <button type="submit" class="gradient-button" id="logButton">
+                  <button
+                    type="submit"
+                    class="gradient-button"
+                    id="eventCreate"
+                  >
                     Submit
                   </button>
                 </div>
@@ -78,7 +103,20 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../dist/bundle.js"></script>
-    <script src="../dhiway/admin.js"></script>
+    <script src="./bundle.js"></script>
+    <script src="./admin.js"></script>
+    <script>
+      function selectOption() {
+        const dropdown = document.getElementById("dropdown")
+        const customInput = document.getElementById("customInput")
+
+        // If the selected option is "Custom", show the input field
+        if (dropdown.value === "custom") {
+          customInput.style.display = "inline-block"
+        } else {
+          customInput.style.display = "none"
+        }
+      }
+    </script>
   </body>
 </html>

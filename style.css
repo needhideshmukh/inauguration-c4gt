@@ -179,3 +179,21 @@ li {
 .gradient-button:hover {
   background-position: right center;
 }
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    padding: 50px 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.095);
+    box-shadow: inset 2.01px -2.01px 20px rgba(214, 214, 214, 0.17),
+      inset -3.01333px 3.01333px 3.01333px rgba(255, 255, 255, 0.39);
+    backdrop-filter: blur(70px);
+    z-index: 1;
+  }
+}
