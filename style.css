@@ -111,16 +111,20 @@ li {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 30vw;
-  padding: 50px 30px;
+  width: 40vw;
+  padding: 30px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.095);
   box-shadow: inset 2.01px -2.01px 20px rgba(214, 214, 214, 0.17),
     inset -3.01333px 3.01333px 3.01333px rgba(255, 255, 255, 0.39);
   backdrop-filter: blur(70px);
   z-index: 1;
+}
+
+.form-container::-webkit-scrollbar {
+  width: 1px;
 }
 
 .form-content {
@@ -164,6 +168,7 @@ li {
 }
 
 .gradient-button {
+  text-align: center;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;

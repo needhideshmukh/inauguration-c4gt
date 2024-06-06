@@ -21,10 +21,23 @@
       >
         C4GT Inauguration
       </h1>
-      <br />
+
+      <!-- --------------------------- -->
+      <h1>Enter the identifier</h1>
+      <input type="text" id="messageInput" placeholder="Enter your message" />
+      <button id="logButton">Submit</button>
+      <br /><br /><br />
+      <button id="watchButton">Watch Events</button>
+      <div id="eventCreate"></div>
+      <div id="eventWitness"></div>
+      <div id="eventWitnessComplete"></div>
+
+      <!-- ----------------------------------- -->
+
+      <!-- <br />
       <h2>Guest count :</h2>
       <br />
-      <h2>Comments....</h2>
+      <h2>Comments....</h2> -->
     </div>
     <br />
     <div class="diyas-container">
@@ -115,6 +128,31 @@
     </div>
 
     <script src="./bundle.js"></script>
-    <script src="./admin.js"></script>
+
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        // Ensure Browserify has loaded the modules
+        const submitIdentifier = window.submitIdentifier
+        const eventManager = window.eventManager
+
+        // Get references to the input field and buttons
+        const messageInput = document.getElementById("messageInput")
+        const logButton = document.getElementById("logButton")
+        const watchButton = document.getElementById("watchButton")
+
+        // Add a click event listener to the log button
+        logButton.addEventListener("click", () => {
+          const identifier = messageInput.value
+          submitIdentifier(identifier)
+        })
+
+        // Add a click event listener to the watch button
+        watchButton.addEventListener("click", () => {
+          // Call the eventManager function
+          eventManager()
+        })
+      })
+    </script>
   </body>
 </html>

@@ -9,21 +9,6 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <style>
-      .add-guest-button {
-        display: inline-block;
-        padding: 10px 20px;
-        margin-top: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .add-guest-button:hover {
-        background-color: #0056b3;
-      }
-
       .form-container {
         max-height: 80vh;
         overflow-y: auto;
@@ -32,20 +17,6 @@
       .button-container {
         margin-top: 20px;
         text-align: center;
-      }
-
-      .gradient-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .gradient-button:hover {
-        background-color: #0056b3;
       }
     </style>
   </head>
@@ -58,6 +29,28 @@
             <div class="form-container">
               <form class="form-content" id="inviteForm">
                 <div class="form-group">
+                  <label for="guestCount">Guest Count</label>
+                  <input
+                    type="number"
+                    id="guestCount"
+                    name="guestCount"
+                    placeholder="Guest Count"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="adminEmail">Admin Email</label>
+                  <input
+                    type="email"
+                    id="adminEmail"
+                    name="adminEmail"
+                    placeholder="Admin Email"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
                   <label for="documentHash">Document Hash</label>
                   <input
                     type="text"
@@ -67,7 +60,6 @@
                     required
                   />
                 </div>
-                <br />
 
                 <div class="form-group">
                   <label for="identifier">Identifier</label>
@@ -79,7 +71,6 @@
                     required
                   />
                 </div>
-                <br />
 
                 <div id="guestInputs">
                   <div class="guest-input">
@@ -93,7 +84,6 @@
                         required
                       />
                     </div>
-                    <br />
 
                     <div class="form-group">
                       <label for="guestEmail">Guest Email</label>
@@ -105,12 +95,19 @@
                         required
                       />
                     </div>
-                    <br />
                   </div>
                 </div>
-
-                <button type="button" class="add-guest-button" onclick="addGuestInput()">Add Another Guest</button>
                 <br />
+                <div class="button-container">
+                  <button
+                    type="button"
+                    class="gradient-button"
+                    onclick="addGuestInput()"
+                  >
+                    Add Another Guest
+                  </button>
+                </div>
+
                 <br />
 
                 <div class="button-container">
@@ -131,68 +128,97 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="./bundle.js"></script>
-    <script src="./guest_invite.js"></script>
     <script>
       function addGuestInput() {
-        const guestInputs = document.getElementById("guestInputs");
-        const guestInputDiv = document.createElement("div");
-        guestInputDiv.className = "guest-input";
+        const guestInputs = document.getElementById("guestInputs")
+        const guestInputDiv = document.createElement("div")
+        guestInputDiv.className = "guest-input"
 
         guestInputDiv.innerHTML = `
+        <br / >
           <div class="form-group">
             <label for="guestName">Guest Name</label>
             <input type="text" id="guestName" name="guestName[]" placeholder="Guest Name" required />
           </div>
-          <br />
           <div class="form-group">
             <label for="guestEmail">Guest Email</label>
             <input type="email" id="guestEmail" name="guestEmail[]" placeholder="Guest Email" required />
           </div>
           <br />
-        `;
+        `
 
-        guestInputs.appendChild(guestInputDiv);
+        guestInputs.appendChild(guestInputDiv)
+      }
+
+      function createAdmin() {
+        const form = document.getElementById("inviteForm")
+        const formData = new FormData(form)
+
+        const data = {
+          email: formData.get("adminEmail"),
+          identifier: formData.get("identifier"),
+          document_hash: formData.get("documentHash"),
+          witnessCount: formData.get("guestCount"),
+        }
+
+        fetch("https://api.demo.dhiway.com/api/v1/dmp/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data)
+          })
+          .catch((error) => {
+            console.error("Error:", error)
+          })
       }
 
       function sendInvite() {
-        const form = document.getElementById("inviteForm");
-        const formData = new FormData(form);
-        const guests = [];
+        createAdmin()
+        const form = document.getElementById("inviteForm")
+        const formData = new FormData(form)
+        const guests = []
         for (const entry of formData.entries()) {
           if (entry[0].startsWith("guestName")) {
-            const index = entry[0].split("[")[1].split("]")[0];
+            const index = entry[0].split("[")[1].split("]")[0]
             const guest = {
               name: entry[1],
-              email: formData.get(`guestEmail[${index}]`)
-            };
-            guests.push(guest);
+              email: formData.get(`guestEmail[${index}]`),
+            }
+            guests.push(guest)
           }
         }
 
         const data = {
           recipients: guests,
           document_hash: formData.get("documentHash"),
-          identifier: formData.get("identifier")
-        };
+          identifier: formData.get("identifier"),
+        }
 
         fetch("https://api.demo.dhiway.com/api/v1/dmp/sendMail", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify(data),
         })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          alert("Invite sent successfully!");
-          form.reset(); // Reset the form after successful submission
-        })
-        .catch(error => {
-          console.error("There was a problem with your fetch operation:", error);
-        });
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok")
+            }
+            alert("Invite sent successfully!")
+            form.reset() // Reset the form after successful submission
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with your fetch operation:",
+              error
+            )
+          })
       }
     </script>
   </body>
