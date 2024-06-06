@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Samagra Event - Guest Invite</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .add-guest-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .add-guest-button:hover {
+        background-color: #0056b3;
+      }
+
+      .form-container {
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .button-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .gradient-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .gradient-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="gradient"></div>
+            <div class="form-container">
+              <form class="form-content" id="inviteForm">
+                <div class="form-group">
+                  <label for="documentHash">Document Hash</label>
+                  <input
+                    type="text"
+                    id="documentHash"
+                    name="documentHash"
+                    placeholder="Document Hash"
+                    required
+                  />
+                </div>
+                <br />
+
+                <div class="form-group">
+                  <label for="identifier">Identifier</label>
+                  <input
+                    type="text"
+                    id="identifier"
+                    name="identifier"
+                    placeholder="Identifier"
+                    required
+                  />
+                </div>
+                <br />
+
+                <div id="guestInputs">
+                  <div class="guest-input">
+                    <div class="form-group">
+                      <label for="guestName">Guest Name</label>
+                      <input
+                        type="text"
+                        id="guestName"
+                        name="guestName[]"
+                        placeholder="Guest Name"
+                        required
+                      />
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                      <label for="guestEmail">Guest Email</label>
+                      <input
+                        type="email"
+                        id="guestEmail"
+                        name="guestEmail[]"
+                        placeholder="Guest Email"
+                        required
+                      />
+                    </div>
+                    <br />
+                  </div>
+                </div>
+
+                <button type="button" class="add-guest-button" onclick="addGuestInput()">Add Another Guest</button>
+                <br />
+                <br />
+
+                <div class="button-container">
+                  <button
+                    type="button"
+                    class="gradient-button"
+                    id="inviteSubmit"
+                    onclick="sendInvite()"
+                  >
+                    Send Invite
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./bundle.js"></script>
+    <script src="./guest_invite.js"></script>
+    <script>
+      function addGuestInput() {
+        const guestInputs = document.getElementById("guestInputs");
+        const guestInputDiv = document.createElement("div");
+        guestInputDiv.className = "guest-input";
+
+        guestInputDiv.innerHTML = `
+          <div class="form-group">
+            <label for="guestName">Guest Name</label>
+            <input type="text" id="guestName" name="guestName[]" placeholder="Guest Name" required />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="guestEmail">Guest Email</label>
+            <input type="email" id="guestEmail" name="guestEmail[]" placeholder="Guest Email" required />
+          </div>
+          <br />
+        `;
+
+        guestInputs.appendChild(guestInputDiv);
+      }
+
+      function sendInvite() {
+        const form = document.getElementById("inviteForm");
+        const formData = new FormData(form);
+        const guests = [];
+        for (const entry of formData.entries()) {
+          if (entry[0].startsWith("guestName")) {
+            const index = entry[0].split("[")[1].split("]")[0];
+            const guest = {
+              name: entry[1],
+              email: formData.get(`guestEmail[${index}]`)
+            };
+            guests.push(guest);
+          }
+        }
+
+        const data = {
+          recipients: guests,
+          document_hash: formData.get("documentHash"),
+          identifier: formData.get("identifier")
+        };
+
+        fetch("https://api.demo.dhiway.com/api/v1/dmp/sendMail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          alert("Invite sent successfully!");
+          form.reset(); // Reset the form after successful submission
+        })
+        .catch(error => {
+          console.error("There was a problem with your fetch operation:", error);
+        });
+      }
+    </script>
+  </body>
+</html>
