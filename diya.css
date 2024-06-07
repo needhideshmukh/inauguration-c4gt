@@ -128,6 +128,9 @@ img,
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.mobileDiya {
+  display: none;
+}
 
 .base {
   height: 26%;
@@ -319,24 +322,24 @@ img,
 .eventDetails {
   color: white;
   display: flex;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .eventHeading {
-  font-size: 100px;
+  font-size: 120px;
   text-align: center;
 }
 
 .guestComment {
   color: white;
-  margin-top: 35%;
+  margin-top: 45%;
 }
 
 .guestComment1 {
   color: white;
-  margin-top: 50%;
+  margin-top: 55%;
 }
 
 .button-container {
@@ -400,28 +403,35 @@ img,
 }
 
 @media screen and (max-width: 768px) {
-  .container2 {
-    display: none;
+  .diyas-container {
+    flex-direction: column;
+    gap: 0px; /* Adjust the gap as needed */
+    transform: translateY(0%);
+    gap: 200px;
+    margin-top: 30%;
   }
-  .diya {
-    height: 100%;
-    width: 100%;
+
+  .diya,
+  .diya2 {
+    height: 300%;
+    width: 70%;
     position: absolute;
-    top: 53%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
   }
-  .flame__fire--outer {
+
+  .flame__fire--outer2 {
     height: 45%;
-    width: 30%;
-    bottom: 8%;
+    width: 40%;
+    bottom: 10%;
     background-color: var(--flame-primary);
     border-radius: 2% 100% 0 100%;
   }
 
-  .flame__fire--inner {
+  .flame__fire--inner,
+  .flame__fire--inner2 {
     height: 25%;
-    width: 15%;
+    width: 22%;
     bottom: 4%;
     background-color: var(--flame-secondary);
     border-radius: 10% 100% 0 100%;
@@ -429,5 +439,32 @@ img,
 
   .eventHeading {
     font-size: 50px;
+  }
+
+  .eventDetails {
+    margin-top: 20%;
+  }
+
+  .guestComment,
+  .guestComment1 {
+    margin-top: 20%;
+  }
+
+  .button-container {
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+  .mobileDiya {
+    display: block;
+  }
+
+  .container {
+    display: none;
+  }
+
+  .identifierEnter {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5%;
   }
 }
