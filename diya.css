@@ -5,6 +5,11 @@
   margin: 0;
   padding: 0;
   font-family: "Nunito", sans-serif;
+  overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.2px;
 }
 
 :root {
@@ -35,7 +40,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px; /* Adjust the gap as needed */
-  transform: translateY(-20%);
+  transform: translateY(-10%);
 }
 
 .container {
@@ -197,15 +202,15 @@ img,
 }
 
 .flame__fire--inner {
-  height: 20%;
-  width: 15%;
+  height: 15%;
+  width: 12%;
   bottom: 4%;
   background-color: var(--flame-secondary);
   border-radius: 10% 100% 0 100%;
 }
 
 .flame__fire--outer2 {
-  height: 40%;
+  height: 38%;
   width: 30%;
   bottom: 10%;
   background-color: var(--flame-primary);
@@ -325,10 +330,11 @@ img,
   justify-content: flex-end;
   flex-direction: column;
   align-items: center;
+  padding-top: 2%;
 }
 
 .eventHeading {
-  font-size: 120px;
+  font-size: 10vh;
   text-align: center;
 }
 
@@ -346,7 +352,6 @@ img,
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px; /* Adjust margin as needed */
 }
 
 .gradient-button {
@@ -367,9 +372,9 @@ img,
   background-position: right center;
 }
 
-.form-group {
+/* .form-group {
   margin-bottom: 20px;
-}
+} */
 
 .form-group label {
   display: block;
@@ -397,18 +402,23 @@ img,
 }
 
 .identifierEnter {
+  padding: 1% 0;
   display: flex;
   align-items: baseline;
   gap: 20px;
+  z-index: 2;
 }
 
 @media screen and (max-width: 768px) {
+  * {
+    overflow-y: visible;
+  }
   .diyas-container {
     flex-direction: column;
     gap: 0px; /* Adjust the gap as needed */
     transform: translateY(0%);
-    gap: 200px;
-    margin-top: 30%;
+    gap: 250px;
+    margin-top: 40%;
   }
 
   .diya,
@@ -438,16 +448,17 @@ img,
   }
 
   .eventHeading {
-    font-size: 50px;
+    font-size: 5vh;
   }
 
   .eventDetails {
-    margin-top: 20%;
+    margin-top: 10%;
   }
 
   .guestComment,
   .guestComment1 {
     margin-top: 20%;
+    transform: translateY(-750%);
   }
 
   .button-container {
@@ -455,6 +466,7 @@ img,
   }
   .mobileDiya {
     display: block;
+    text-align: center;
   }
 
   .container {

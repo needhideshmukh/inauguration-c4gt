@@ -23,7 +23,7 @@
       </h1>
       <!-- --------------------------- -->
       <div class="identifierEnter">
-        <h2>Enter the identifier :</h2>
+        <h2>Enter the identifier:</h2>
         <div class="form-group">
           <input
             type="text"
@@ -37,16 +37,9 @@
           <button id="logButton" class="gradient-button">Submit</button>
         </div>
       </div>
-
-      <div id="eventCreate"></div>
+      <!-- <div id="eventCreate"></div> -->
       <div id="eventWitness1"></div>
       <div id="eventWitnessComplete1"></div>
-      <!-- ----------------------------------- -->
-
-      <!-- <br />
-      <h2>Guest count :</h2>
-      <br />
-      <h2>Comments....</h2> -->
     </div>
     <br />
     <div class="diyas-container">
@@ -181,13 +174,12 @@
         const eventManager = window.eventManager
 
         // Get references to the input field and buttons
-        const messageInput = document.getElementById("messageInput")
+        const newField = document.getElementById("newField") // Change this line
         const logButton = document.getElementById("logButton")
-        const watchButton = document.getElementById("watchButton")
 
         // Add a click event listener to the log button
         logButton.addEventListener("click", () => {
-          const identifier = messageInput.value
+          const identifier = newField.value // And this line
           submitIdentifier(identifier)
           eventManager()
         })
