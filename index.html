@@ -21,17 +21,28 @@
       >
         C4GT Inauguration
       </h1>
-
+      <br />
       <!-- --------------------------- -->
-      <h1>Enter the identifier</h1>
-      <input type="text" id="messageInput" placeholder="Enter your message" />
-      <button id="logButton">Submit</button>
-      <br /><br /><br />
-      <button id="watchButton">Watch Events</button>
-      <div id="eventCreate"></div>
-      <div id="eventWitness"></div>
-      <div id="eventWitnessComplete"></div>
+      <div class="identifierEnter">
+        <h2>Enter the identifier :</h2>
+        <div class="form-group">
+          <input
+            type="text"
+            id="newField"
+            name="newField"
+            placeholder="Enter the Event Identifier"
+            required
+          />
+        </div>
+      </div>
 
+      <div class="button-container">
+        <button id="logButton" class="gradient-button">Submit</button>
+      </div>
+      <br /><br /><br />
+      <div id="eventCreate"></div>
+      <div id="eventWitness1"></div>
+      <div id="eventWitnessComplete1"></div>
       <!-- ----------------------------------- -->
 
       <!-- <br />
@@ -42,6 +53,8 @@
     <br />
     <div class="diyas-container">
       <div class="container2">
+        <p class="guestComment1">HIIIIIIIIIIIIIII</p>
+
         <div class="background">
           <div class="star star--1"></div>
           <div class="star star--2"></div>
@@ -70,6 +83,8 @@
         </div>
       </div>
       <div class="container">
+        <p class="guestComment">HIIIIIIIIIIIIIII</p>
+
         <div class="background">
           <div class="star star--1"></div>
           <div class="star star--2"></div>
@@ -98,6 +113,7 @@
         </div>
       </div>
       <div class="container2">
+        <p class="guestComment1">HIIIIIIIIIIIIIII</p>
         <div class="background">
           <div class="star star--1"></div>
           <div class="star star--2"></div>
@@ -145,11 +161,6 @@
         logButton.addEventListener("click", () => {
           const identifier = messageInput.value
           submitIdentifier(identifier)
-        })
-
-        // Add a click event listener to the watch button
-        watchButton.addEventListener("click", () => {
-          // Call the eventManager function
           eventManager()
         })
       })
