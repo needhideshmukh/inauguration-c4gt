@@ -42,6 +42,9 @@ body {
   gap: 20px; /* Adjust the gap as needed */
   transform: translateY(-10%);
 }
+.diyas-container i {
+  color: white;
+}
 
 .container {
   flex: 1;
@@ -49,6 +52,7 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
+  text-align: center;
 }
 .container2 {
   flex: 1;
@@ -56,6 +60,7 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
+  text-align: center;
 }
 
 img {
@@ -340,12 +345,12 @@ img,
 
 .guestComment {
   color: white;
-  margin-top: 45%;
+  margin-top: 33%;
 }
 
 .guestComment1 {
   color: white;
-  margin-top: 55%;
+  margin-top: 25%;
 }
 
 .button-container {
@@ -409,6 +414,23 @@ img,
   z-index: 2;
 }
 
+hr {
+  border: none;
+  border-top: 3px double rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255);
+  overflow: visible;
+  text-align: center;
+  width: 60%;
+  padding: 10px 0;
+}
+
+hr::after {
+  content: " ⚶ ";
+  position: relative;
+  top: -23px;
+  z-index: 2;
+}
+
 @media screen and (max-width: 768px) {
   * {
     overflow-y: visible;
@@ -457,7 +479,7 @@ img,
 
   .guestComment,
   .guestComment1 {
-    margin-top: 20%;
+    margin-top: 10%;
     transform: translateY(-750%);
   }
 
