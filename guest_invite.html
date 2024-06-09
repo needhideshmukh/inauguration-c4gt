@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>DMP Inauguration - Guest Invite</title>
+    <title>Samagra Event - Guest Invite</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -13,6 +13,7 @@
         max-height: 80vh;
         overflow-y: auto;
       }
+
       .button-container {
         margin-top: 20px;
         text-align: center;
@@ -27,15 +28,17 @@
             <div class="gradient"></div>
             <div class="form-container">
               <form class="form-content" id="inviteForm">
-                <div class="form-group">
+                <!--  <div class="form-group">
                   <label for="guestCount">Guest Count</label>
                   <input
                     type="number"
                     id="guestCount"
                     name="guestCount"
                     placeholder="Guest Count"
+                    required
                   />
-                </div>
+                </div> 
+
                 <div class="form-group">
                   <label for="adminEmail">Admin Email</label>
                   <input
@@ -43,8 +46,10 @@
                     id="adminEmail"
                     name="adminEmail"
                     placeholder="Admin Email"
+                    required
                   />
                 </div>
+              -->
                 <div class="form-group">
                   <label for="documentHash">Document Hash</label>
                   <input
@@ -52,8 +57,10 @@
                     id="documentHash"
                     name="documentHash"
                     placeholder="Document Hash"
+                    required
                   />
                 </div>
+
                 <div class="form-group">
                   <label for="identifier">Identifier</label>
                   <input
@@ -61,32 +68,81 @@
                     id="identifier"
                     name="identifier"
                     placeholder="Identifier"
+                    required
                   />
                 </div>
-                <div id="guestInputs">
-                  <div class="guest-input">
-                    <div class="form-group">
-                      <label for="guestName">Guest Name</label>
-                      <input
-                        type="text"
-                        id="guestName"
-                        name="guestName[]"
-                        placeholder="Guest Name"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="guestEmail">Guest Email</label>
-                      <input
-                        type="email"
-                        id="guestEmail"
-                        name="guestEmail[]"
-                        placeholder="Guest Email"
-                      />
-                    </div>
-                  </div>
+
+                <div class="form-group">
+                  <label for="guestName1">Guest 1 Name</label>
+                  <input
+                    type="text"
+                    id="guestName1"
+                    name="guestName1"
+                    placeholder="Guest 1 Name"
+                    required
+                  />
                 </div>
+
+                <div class="form-group">
+                  <label for="guestEmail1">Guest 1 Email</label>
+                  <input
+                    type="email"
+                    id="guestEmail1"
+                    name="guestEmail1"
+                    placeholder="Guest 1 Email"
+                    required
+                  />
+                </div>
+
                 <br />
-                <div class="button-container">
+
+                <div class="form-group">
+                  <label for="guestName2">Guest 2 Name</label>
+                  <input
+                    type="text"
+                    id="guestName2"
+                    name="guestName2"
+                    placeholder="Guest Name 2"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="guestEmail2">Guest 2 Email</label>
+                  <input
+                    type="email"
+                    id="guestEmail2"
+                    name="guestEmail2"
+                    placeholder="Guest Email 2"
+                    required
+                  />
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                  <label for="guestName3">Guest 3 Name</label>
+                  <input
+                    type="text"
+                    id="guestName3"
+                    name="guestName3"
+                    placeholder="Guest Name 3"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="guestEmail3">Guest 3 Email</label>
+                  <input
+                    type="email"
+                    id="guestEmail3"
+                    name="guestEmail3"
+                    placeholder="Guest Email 3"
+                    required
+                  />
+                </div>
+
+                <!-- <div class="button-container">
                   <button
                     type="button"
                     class="gradient-button"
@@ -94,8 +150,10 @@
                   >
                     Add Another Guest
                   </button>
-                </div>
+                </div> -->
+
                 <br />
+
                 <div class="button-container">
                   <button
                     type="button"
@@ -112,116 +170,93 @@
         </div>
       </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      function addGuestInput() {
-        const guestInputs = document.getElementById("guestInputs")
-        const guestInputDiv = document.createElement("div")
-        guestInputDiv.className = "guest-input"
-
-        guestInputDiv.innerHTML = `
-          <br />
-          <div class="form-group">
-            <label for="guestName">Guest Name</label>
-            <input type="text" name="guestName[]" placeholder="Guest Name" required />
-          </div>
-          <div class="form-group">
-            <label for="guestEmail">Guest Email</label>
-            <input type="email" name="guestEmail[]" placeholder="Guest Email" required />
-          </div>
-          <br />
-        `
-
-        guestInputs.appendChild(guestInputDiv)
-      }
-
       function createAdmin() {
         const form = document.getElementById("inviteForm")
         const formData = new FormData(form)
 
-        // const data = {
-        //   email: formData.get("adminEmail"),
-        //   identifier: formData.get("identifier"),
-        //   document_hash: formData.get("documentHash"),
-        //   witnessCount: formData.get("guestCount"),
-        // }
-
-        data = {
-          email: "vedron007@gmail.com",
-          identifier: "DMP_TEST_WITH_VED_30111",
-          document_hash:
-            "a4ac836866383a0893bd428ebd17f4e9099e2fd33dc59bd7061591a17625a7a6",
-          witnessCount: "1",
+        const data = {
+          email: "test@test.com", // formData.get("adminEmail"),
+          identifier: formData.get("identifier"),
+          document_hash: formData.get("documentHash"),
+          witnessCount: 3, //formData.get("guestCount"),
         }
 
-        return fetch("https://api.demo.dhiway.com/api/v1/dmp/create", {
+        fetch("https://api.demo.dhiway.com/api/v1/dmp/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
-        }).then((response) => response.json())
-
-        // return new Promise((resolve, reject) => {
-        //   // Hardcoded example: resolving with a predefined value
-        //   const dummyData = {
-        //     adminId: 123,
-        //     message: "Admin created successfully",
-        //   }
-        //   resolve(dummyData)
-        // })
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data)
+          })
+          .catch((error) => {
+            console.error("Error:", error)
+          })
       }
 
       function sendInvite() {
         createAdmin()
-          .then(() => {
-            const form = document.getElementById("inviteForm")
-            const formData = new FormData(form)
-            const guests = []
 
-            // Collect all guest names and emails
-            const guestNames = formData.getAll("guestName[]")
-            const guestEmails = formData.getAll("guestEmail[]")
+        const form = document.getElementById("inviteForm")
+        const formData = new FormData(form)
 
-            guestNames.forEach((name, index) => {
-              guests.push({
-                name: name,
-                email: guestEmails[index],
-              })
-            })
+        const guests = [
+          {
+            name: formData.get("guestName1"),
+            email: formData.get("guestEmail1"),
+          },
+          {
+            name: formData.get("guestName2"),
+            email: formData.get("guestEmail2"),
+          },
+          {
+            name: formData.get("guestName3"),
+            email: formData.get("guestEmail3"),
+          },
+        ]
 
-            // const data = {
-            //   recipients: guests,
-            //   document_hash: formData.get("documentHash"),
-            //   identifier: formData.get("identifier"),
-            // }
+        const guests2 = [
+          {
+            name: "Vedant 1",
+            email: "vedron007@gmail.com",
+          },
+          {
+            name: "Vedant 2",
+            email: "vedantkhairnar01@gmail.com",
+          },
+          {
+            name: "Needhi",
+            email: "needhideshmukh05@gmail.com",
+          },
+        ]
 
-            data = {
-              recipients: [
-                {
-                  name: "vedant",
-                  email: "vedantkhairnar01@gmail.com",
-                },
-              ],
-              document_hash:
-                "a4ac836866383a0893bd428ebd17f4e9099e2fd33dc59bd7061591a17625a7a6",
-              identifier: "DMP_TEST_WITH_VED_3011",
-            }
+        console.log(guests)
 
-            return fetch("https://api.demo.dhiway.com/api/v1/dmp/sendMail", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
-            })
-          })
+        const data = {
+          recipients: guests,
+          document_hash: formData.get("documentHash"),
+          identifier: formData.get("identifier"),
+        }
+        console.log(data)
+        fetch("https://api.demo.dhiway.com/api/v1/dmp/sendMail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok")
             }
             alert("Invite sent successfully!")
-            document.getElementById("inviteForm").reset()
+            form.reset() // Reset the form after successful submission
           })
           .catch((error) => {
             console.error(
