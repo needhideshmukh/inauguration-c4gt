@@ -439,8 +439,8 @@ hr::after {
     flex-direction: column;
     gap: 0px; /* Adjust the gap as needed */
     transform: translateY(0%);
-    gap: 250px;
-    margin-top: 40%;
+    gap: 350px;
+    margin-top: 50%;
   }
 
   .diya,
@@ -453,7 +453,7 @@ hr::after {
   }
 
   .flame__fire--outer2 {
-    height: 45%;
+    height: 25%;
     width: 40%;
     bottom: 10%;
     background-color: var(--flame-primary);
@@ -462,11 +462,16 @@ hr::after {
 
   .flame__fire--inner,
   .flame__fire--inner2 {
-    height: 25%;
+    height: 15%;
     width: 22%;
-    bottom: 4%;
+    bottom: 7%;
     background-color: var(--flame-secondary);
     border-radius: 10% 100% 0 100%;
+  }
+
+  .base {
+    width: 80%;
+    height: 20%;
   }
 
   .eventHeading {
@@ -480,11 +485,11 @@ hr::after {
   .guestComment,
   .guestComment1 {
     margin-top: 10%;
-    transform: translateY(-750%);
+    transform: translateY(0%);
   }
 
   .button-container {
-    margin-top: 20px; /* Adjust margin as needed */
+    margin-top: 0px; /* Adjust margin as needed */
   }
   .mobileDiya {
     display: block;
@@ -500,5 +505,32 @@ hr::after {
     align-items: center;
     gap: 10px;
     padding-top: 5%;
+  }
+
+  .guestComment {
+    color: white;
+    margin-top: 0%;
+  }
+
+  .guestComment1 {
+    color: white;
+    margin-top: 0%;
+  }
+
+  hr {
+    border: none;
+    border-top: 3px double rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255);
+    overflow: visible;
+    text-align: center;
+    width: 60%;
+    padding: 0px 0;
+  }
+
+  hr::after {
+    content: " ⚶ ";
+    position: relative;
+    top: 0px;
+    z-index: 2;
   }
 }
