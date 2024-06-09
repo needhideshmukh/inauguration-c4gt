@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>DMP Inauguration - Guest Invite</title>
+    <title>Samagra Event - Guest Invite</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -13,6 +13,7 @@
         max-height: 80vh;
         overflow-y: auto;
       }
+
       .button-container {
         margin-top: 20px;
         text-align: center;
@@ -34,8 +35,10 @@
                     id="guestCount"
                     name="guestCount"
                     placeholder="Guest Count"
+                    required
                   />
                 </div>
+
                 <div class="form-group">
                   <label for="adminEmail">Admin Email</label>
                   <input
@@ -43,8 +46,10 @@
                     id="adminEmail"
                     name="adminEmail"
                     placeholder="Admin Email"
+                    required
                   />
                 </div>
+
                 <div class="form-group">
                   <label for="documentHash">Document Hash</label>
                   <input
@@ -52,8 +57,10 @@
                     id="documentHash"
                     name="documentHash"
                     placeholder="Document Hash"
+                    required
                   />
                 </div>
+
                 <div class="form-group">
                   <label for="identifier">Identifier</label>
                   <input
@@ -61,8 +68,10 @@
                     id="identifier"
                     name="identifier"
                     placeholder="Identifier"
+                    required
                   />
                 </div>
+
                 <div id="guestInputs">
                   <div class="guest-input">
                     <div class="form-group">
@@ -72,8 +81,10 @@
                         id="guestName"
                         name="guestName[]"
                         placeholder="Guest Name"
+                        required
                       />
                     </div>
+
                     <div class="form-group">
                       <label for="guestEmail">Guest Email</label>
                       <input
@@ -81,6 +92,7 @@
                         id="guestEmail"
                         name="guestEmail[]"
                         placeholder="Guest Email"
+                        required
                       />
                     </div>
                   </div>
@@ -95,7 +107,9 @@
                     Add Another Guest
                   </button>
                 </div>
+
                 <br />
+
                 <div class="button-container">
                   <button
                     type="button"
@@ -112,6 +126,7 @@
         </div>
       </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       function addGuestInput() {
@@ -120,14 +135,14 @@
         guestInputDiv.className = "guest-input"
 
         guestInputDiv.innerHTML = `
-          <br />
+        <br / >
           <div class="form-group">
             <label for="guestName">Guest Name</label>
-            <input type="text" name="guestName[]" placeholder="Guest Name" required />
+            <input type="text" id="guestName" name="guestName[]" placeholder="Guest Name" required />
           </div>
           <div class="form-group">
             <label for="guestEmail">Guest Email</label>
-            <input type="email" name="guestEmail[]" placeholder="Guest Email" required />
+            <input type="email" id="guestEmail" name="guestEmail[]" placeholder="Guest Email" required />
           </div>
           <br />
         `
@@ -139,89 +154,64 @@
         const form = document.getElementById("inviteForm")
         const formData = new FormData(form)
 
-        // const data = {
-        //   email: formData.get("adminEmail"),
-        //   identifier: formData.get("identifier"),
-        //   document_hash: formData.get("documentHash"),
-        //   witnessCount: formData.get("guestCount"),
-        // }
-
-        data = {
-          email: "vedron007@gmail.com",
-          identifier: "DMP_TEST_WITH_VED_30111",
-          document_hash:
-            "a4ac836866383a0893bd428ebd17f4e9099e2fd33dc59bd7061591a17625a7a6",
-          witnessCount: "1",
+        const data = {
+          email: formData.get("adminEmail"),
+          identifier: formData.get("identifier"),
+          document_hash: formData.get("documentHash"),
+          witnessCount: formData.get("guestCount"),
         }
 
-        return fetch("https://api.demo.dhiway.com/api/v1/dmp/create", {
+        fetch("https://api.demo.dhiway.com/api/v1/dmp/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
-        }).then((response) => response.json())
-
-        // return new Promise((resolve, reject) => {
-        //   // Hardcoded example: resolving with a predefined value
-        //   const dummyData = {
-        //     adminId: 123,
-        //     message: "Admin created successfully",
-        //   }
-        //   resolve(dummyData)
-        // })
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data)
+          })
+          .catch((error) => {
+            console.error("Error:", error)
+          })
       }
 
       function sendInvite() {
         createAdmin()
-          .then(() => {
-            const form = document.getElementById("inviteForm")
-            const formData = new FormData(form)
-            const guests = []
-
-            // Collect all guest names and emails
-            const guestNames = formData.getAll("guestName[]")
-            const guestEmails = formData.getAll("guestEmail[]")
-
-            guestNames.forEach((name, index) => {
-              guests.push({
-                name: name,
-                email: guestEmails[index],
-              })
-            })
-
-            // const data = {
-            //   recipients: guests,
-            //   document_hash: formData.get("documentHash"),
-            //   identifier: formData.get("identifier"),
-            // }
-
-            data = {
-              recipients: [
-                {
-                  name: "vedant",
-                  email: "vedantkhairnar01@gmail.com",
-                },
-              ],
-              document_hash:
-                "a4ac836866383a0893bd428ebd17f4e9099e2fd33dc59bd7061591a17625a7a6",
-              identifier: "DMP_TEST_WITH_VED_3011",
+        const form = document.getElementById("inviteForm")
+        const formData = new FormData(form)
+        const guests = []
+        for (const entry of formData.entries()) {
+          if (entry[0].startsWith("guestName")) {
+            const index = entry[0].split("[")[1].split("]")[0]
+            const guest = {
+              name: entry[1],
+              email: formData.get(`guestEmail[${index}]`),
             }
+            guests.push(guest)
+          }
+        }
 
-            return fetch("https://api.demo.dhiway.com/api/v1/dmp/sendMail", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
-            })
-          })
+        const data = {
+          recipients: guests,
+          document_hash: formData.get("documentHash"),
+          identifier: formData.get("identifier"),
+        }
+
+        fetch("https://api.demo.dhiway.com/api/v1/dmp/sendMail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok")
             }
             alert("Invite sent successfully!")
-            document.getElementById("inviteForm").reset()
+            form.reset() // Reset the form after successful submission
           })
           .catch((error) => {
             console.error(
