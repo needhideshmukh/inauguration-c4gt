@@ -63,6 +63,10 @@ body {
   text-align: center;
 }
 
+#container1 #container2 #container3 {
+  width: 30%;
+}
+
 img {
   /* opacity: 0.5; */
   display: none;
@@ -429,6 +433,10 @@ hr::after {
   position: relative;
   top: -23px;
   z-index: 2;
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="diya.css" />
+    <title>C4GT Inauguration</title>
+    <style>
+      @font-face {
+        font-family: "Samaan";
+        src: url("./SAMAN___.TTF");
+      }
+
+      .hidden {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      }
+
+      .visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eventDetails" id="eventCreate">
+      <h1
+        id="updateEventCreateDiv"
+        style="font-family: 'Samaan'"
+        class="eventHeading"
+      >
+        DMP Inauguration
+      </h1>
+
+      <!-- --------------------------- -->
+
+      <!-- --------------------------- -->
+
+      <div id="eventCreate"></div>
+      <div id="eventWitness1"></div>
+      <div id="eventWitnessComplete1"></div>
+    </div>
+    <br />
+    <div class="diyas-container">
+      <div class="container" id="container1">
+        <p class="guestComment1 hidden" id="comment1">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
+        </p>
+        <br />
+        <hr class="hrStyle hidden" id="hr1" />
+        <i
+          class="hidden"
+          id="guestName1"
+          style="font-weight: 900; padding: 0 2px"
+          >~ Guest Name abc</i
+        >
+
+        <div class="background">
+          <div class="star star--1"></div>
+          <div class="star star--2"></div>
+          <div class="star star--3"></div>
+        </div>
+        <div class="diya">
+          <div class="diya__base base">
+            <div class="base__part base__part--bottom">
+              <div class="base__decoration base__decoration--left"></div>
+              <div class="base__decoration base__decoration--right"></div>
+            </div>
+            <div class="base__part base__part--top"></div>
+          </div>
+          <div class="diya__flame flame hidden" id="flame1">
+            <div class="flame__shadow flame__shadow--big"></div>
+            <div class="flame__shadow flame__shadow--sm1"></div>
+            <div class="flame__shadow flame__shadow--sm2"></div>
+            <div class="flame__shadow flame__shadow--sm3"></div>
+            <div class="flame__fire flame__fire--outer2"></div>
+            <div class="flame__fire flame__fire--inner2"></div>
+          </div>
+          <div class="diya__shadow shadow">
+            <div class="shadow__flame"></div>
+            <div class="shadow__diya"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="container2">
+        <p class="guestComment1 hidden" id="comment2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
+        </p>
+        <br />
+        <hr class="hrStyle hidden" id="hr2" />
+        <i
+          class="hidden"
+          id="guestName2"
+          style="font-weight: 900; padding: 0 2px"
+          >~ Guest Name abc</i
+        >
+
+        <div class="background">
+          <div class="star star--1"></div>
+          <div class="star star--2"></div>
+          <div class="star star--3"></div>
+        </div>
+        <div class="diya">
+          <div class="diya__base base">
+            <div class="base__part base__part--bottom">
+              <div class="base__decoration base__decoration--left"></div>
+              <div class="base__decoration base__decoration--right"></div>
+            </div>
+            <div class="base__part base__part--top"></div>
+          </div>
+          <div class="diya__flame flame hidden" id="flame2">
+            <div class="flame__shadow flame__shadow--big"></div>
+            <div class="flame__shadow flame__shadow--sm1"></div>
+            <div class="flame__shadow flame__shadow--sm2"></div>
+            <div class="flame__shadow flame__shadow--sm3"></div>
+            <div class="flame__fire flame__fire--outer2"></div>
+            <div class="flame__fire flame__fire--inner2"></div>
+          </div>
+          <div class="diya__shadow shadow">
+            <div class="shadow__flame"></div>
+            <div class="shadow__diya"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="container3">
+        <p class="guestComment1 hidden" id="comment3">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
+        </p>
+        <br />
+        <hr class="hrStyle hidden" id="hr3" />
+        <i
+          class="hidden"
+          id="guestName3"
+          style="font-weight: 900; padding: 0 2px"
+          >~ Guest Name abc</i
+        >
+
+        <div class="background">
+          <div class="star star--1"></div>
+          <div class="star star--2"></div>
+          <div class="star star--3"></div>
+        </div>
+        <div class="diya">
+          <div class="diya__base base">
+            <div class="base__part base__part--bottom">
+              <div class="base__decoration base__decoration--left"></div>
+              <div class="base__decoration base__decoration--right"></div>
+            </div>
+            <div class="base__part base__part--top"></div>
+          </div>
+          <div class="diya__flame flame hidden" id="flame3">
+            <div class="flame__shadow flame__shadow--big"></div>
+            <div class="flame__shadow flame__shadow--sm1"></div>
+            <div class="flame__shadow flame__shadow--sm2"></div>
+            <div class="flame__shadow flame__shadow--sm3"></div>
+            <div class="flame__fire flame__fire--outer2"></div>
+            <div class="flame__fire flame__fire--inner2"></div>
+          </div>
+          <div class="diya__shadow shadow">
+            <div class="shadow__flame"></div>
+            <div class="shadow__diya"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./bundle.js"></script>
+
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        // Get references to the flames and comments
+        const elements = [
+          {
+            flame: document.getElementById("flame1"),
+            comment: document.getElementById("comment1"),
+            hr: document.getElementById("hr1"),
+            guestName: document.getElementById("guestName1"),
+          },
+          {
+            flame: document.getElementById("flame2"),
+            comment: document.getElementById("comment2"),
+            hr: document.getElementById("hr2"),
+            guestName: document.getElementById("guestName2"),
+          },
+          {
+            flame: document.getElementById("flame3"),
+            comment: document.getElementById("comment3"),
+            hr: document.getElementById("hr3"),
+            guestName: document.getElementById("guestName3"),
+          },
+        ]
+
+        let currentIndex = 0
+
+        // Function to show the next flame and comment
+        const showNextElement = () => {
+          if (currentIndex < elements.length) {
+            elements[currentIndex].flame.classList.add("visible")
+            elements[currentIndex].flame.classList.remove("hidden")
+            elements[currentIndex].comment.classList.add("visible")
+            elements[currentIndex].comment.classList.remove("hidden")
+            elements[currentIndex].hr.classList.add("visible")
+            elements[currentIndex].hr.classList.remove("hidden")
+            elements[currentIndex].guestName.classList.add("visible")
+            elements[currentIndex].guestName.classList.remove("hidden")
+            currentIndex++
+          }
+        }
+
+        // Set interval to show the next flame and comment every 400 ms
+        const intervalId = setInterval(() => {
+          showNextElement()
+          if (currentIndex >= elements.length) {
+            clearInterval(intervalId)
+          }
+        }, 3000)
+
+        // Show the first flame and comment immediately
+        showNextElement()
+      })
+    </script>
+  </body>
+</html>
