@@ -210,6 +210,10 @@
         logButton.addEventListener("click", () => {
           const identifier = newField.value // And this line
           console.log("checking global vars here",eventCreate, eventWitness);
+          let eventCreate = window.eventCreate;
+          let eventWitness = window.eventWitness;
+          console.log("checking global vars again here",eventCreate, eventWitness);
+
           submitIdentifier(identifier)
           eventManager()
         })
