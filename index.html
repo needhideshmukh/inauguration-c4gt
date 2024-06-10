@@ -209,11 +209,15 @@
         // Add a click event listener to the log button
         logButton.addEventListener("click", () => {
           const identifier = newField.value // And this line
+          console.log(eventCreate, eventWitness);
           submitIdentifier(identifier)
           eventManager()
         })
       })
 
+
+
+      
       // -------------Comment display
       // document.addEventListener("DOMContentLoaded", () => {
       //   const messageContainer = document.getElementById("message-container")
@@ -240,6 +244,7 @@
       // })
 
       // -------------Comment display
+
     </script>
   </body>
 </html>
