@@ -23,7 +23,7 @@
       </h1>
 
       <!-- --------------------------- -->
-      <!-- <div class="identifierEnter">
+      <div class="identifierEnter">
         <h2>Enter the identifier:</h2>
         <div class="form-group">
           <input
@@ -37,7 +37,7 @@
         <div class="button-container">
           <button id="logButton" class="gradient-button">Submit</button>
         </div>
-      </div> -->
+      </div>
       <!-- --------------------------- -->
 
       <div id="eventCreate"></div>
@@ -208,7 +208,7 @@
 
         // Add a click event listener to the log button
         logButton.addEventListener("click", () => {
-          const identifier = '' // newField.value // And this line
+          const identifier = newField.value // And this line
           submitIdentifier(identifier)
           eventManager()
         })
