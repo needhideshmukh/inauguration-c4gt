@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   font-family: "Nunito", sans-serif;
-  overflow-y: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -31,15 +30,10 @@ body {
   padding: 1% 5%;
 }
 
-@font-face {
-  font-family: "SAMAN__";
-  src: url("./SAMAN__.TTF") format("TrueType");
-}
-
 .diyas-container {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Adjust the gap as needed */
+  gap: 20px;
   transform: translateY(-10%);
 }
 .diyas-container i {
@@ -54,21 +48,8 @@ body {
   position: relative;
   text-align: center;
 }
-.container2 {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  text-align: center;
-}
-
-#container1 #container2 #container3 {
-  width: 30%;
-}
 
 img {
-  /* opacity: 0.5; */
   display: none;
 }
 
@@ -89,7 +70,6 @@ img,
   height: calc(var(--unit) * 30);
   width: calc(var(--unit) * 30);
   position: absolute;
-
   clip-path: polygon(
     50% 0,
     55% 45%,
@@ -134,18 +114,6 @@ img,
   transform: translate(-50%, -50%);
 }
 
-.diya2 {
-  height: 50%;
-  width: 80%;
-  position: absolute;
-  top: 53%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.mobileDiya {
-  display: none;
-}
-
 .base {
   height: 26%;
   width: 63%;
@@ -153,7 +121,6 @@ img,
   top: 77.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* display: none; */
 }
 
 .base__part--top {
@@ -199,23 +166,6 @@ img,
   transform: translate(-50%, 0);
   height: 73%;
   width: 100%;
-  /* display: none; */
-}
-
-.flame__fire--outer {
-  height: 30%;
-  width: 25%;
-  bottom: 8%;
-  background-color: var(--flame-primary);
-  border-radius: 2% 100% 0 100%;
-}
-
-.flame__fire--inner {
-  height: 15%;
-  width: 12%;
-  bottom: 4%;
-  background-color: var(--flame-secondary);
-  border-radius: 10% 100% 0 100%;
 }
 
 .flame__fire--outer2 {
@@ -278,7 +228,6 @@ img,
   top: 60%;
   left: 39%;
   animation: aura-glow 1.8s 1.8s infinite ease-in-out;
-  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
 }
 
 .shadow {
@@ -347,75 +296,9 @@ img,
   text-align: center;
 }
 
-.guestComment {
-  color: white;
-  margin-top: 33%;
-}
-
 .guestComment1 {
   color: white;
-  margin-top: 25%;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gradient-button {
-  text-align: center;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background-color: transparent;
-  border: 1px solid #ccc;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  background-size: 200% 200%;
-}
-
-.gradient-button:hover {
-  background-position: right center;
-}
-
-/* .form-group {
-  margin-bottom: 20px;
-} */
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: rgba(255, 255, 255, 0.095);
-  color: white;
-}
-
-::placeholder {
-  color: white;
-  opacity: 0.5;
-}
-
-::-ms-input-placeholder {
-  color: white;
-  opacity: 0.5;
-}
-
-.identifierEnter {
-  padding: 1% 0;
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
-  z-index: 2;
+  margin-top: 30%;
 }
 
 hr {
@@ -426,6 +309,7 @@ hr {
   text-align: center;
   width: 60%;
   padding: 10px 0;
+  align-items: center;
 }
 
 hr::after {
@@ -435,8 +319,10 @@ hr::after {
   z-index: 2;
 }
 
-.hidden {
-  display: none;
+.GuestNameComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -445,15 +331,14 @@ hr::after {
   }
   .diyas-container {
     flex-direction: column;
-    gap: 0px; /* Adjust the gap as needed */
+    align-items: center;
     transform: translateY(0%);
-    gap: 350px;
-    margin-top: 50%;
+    gap: 400px;
+    margin-top: 200px;
   }
 
-  .diya,
-  .diya2 {
-    height: 300%;
+  .diya {
+    height: 500%;
     width: 70%;
     position: absolute;
     top: 50%;
@@ -461,84 +346,31 @@ hr::after {
   }
 
   .flame__fire--outer2 {
-    height: 25%;
+    height: 46%;
     width: 40%;
     bottom: 10%;
     background-color: var(--flame-primary);
     border-radius: 2% 100% 0 100%;
   }
 
-  .flame__fire--inner,
   .flame__fire--inner2 {
-    height: 15%;
+    height: 25%;
     width: 22%;
-    bottom: 7%;
+    bottom: 6%;
     background-color: var(--flame-secondary);
     border-radius: 10% 100% 0 100%;
-  }
-
-  .base {
-    width: 80%;
-    height: 20%;
   }
 
   .eventHeading {
     font-size: 5vh;
   }
 
-  .eventDetails {
-    margin-top: 10%;
-  }
-
-  .guestComment,
   .guestComment1 {
-    margin-top: 10%;
-    transform: translateY(0%);
+    color: white;
+    margin-top: -20%;
   }
 
-  .button-container {
-    margin-top: 0px; /* Adjust margin as needed */
-  }
-  .mobileDiya {
-    display: block;
-    text-align: center;
-  }
-
-  .container {
+  .hidden {
     display: none;
-  }
-
-  .identifierEnter {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding-top: 5%;
-  }
-
-  .guestComment {
-    color: white;
-    margin-top: 0%;
-  }
-
-  .guestComment1 {
-    color: white;
-    margin-top: 0%;
-  }
-
-  hr {
-    border: none;
-    border-top: 3px double rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255);
-    overflow: visible;
-    text-align: center;
-    width: 60%;
-    padding: 0px 0;
-  }
-
-  hr::after {
-    content: " ⚶ ";
-    position: relative;
-    top: 0px;
-    z-index: 2;
   }
 }

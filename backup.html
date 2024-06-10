@@ -42,17 +42,20 @@
     <br />
     <div class="diyas-container">
       <div class="container" id="container1">
-        <p class="guestComment1 hidden" id="comment1">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
-        </p>
-        <br />
-        <hr class="hrStyle hidden" id="hr1" />
-        <i
-          class="hidden"
-          id="guestName1"
-          style="font-weight: 900; padding: 0 2px"
-          >~ Guest Name abc</i
-        >
+        <div class="GuestNameComment">
+          <p class="guestComment1 hidden" id="comment1">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+            sequi?
+          </p>
+          <br />
+          <hr class="hrStyle hidden" id="hr1" />
+          <i
+            class="hidden"
+            id="guestName1"
+            style="font-weight: 900; padding: 0 2px"
+            >~ Guest Name abc</i
+          >
+        </div>
 
         <div class="background">
           <div class="star star--1"></div>
@@ -83,17 +86,20 @@
       </div>
 
       <div class="container" id="container2">
-        <p class="guestComment1 hidden" id="comment2">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
-        </p>
-        <br />
-        <hr class="hrStyle hidden" id="hr2" />
-        <i
-          class="hidden"
-          id="guestName2"
-          style="font-weight: 900; padding: 0 2px"
-          >~ Guest Name abc</i
-        >
+        <div class="GuestNameComment">
+          <p class="guestComment1 hidden" id="comment2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+            sequi?
+          </p>
+          <br />
+          <hr class="hrStyle hidden" id="hr2" />
+          <i
+            class="hidden"
+            id="guestName2"
+            style="font-weight: 900; padding: 0 2px"
+            >~ Guest Name abc</i
+          >
+        </div>
 
         <div class="background">
           <div class="star star--1"></div>
@@ -124,17 +130,20 @@
       </div>
 
       <div class="container" id="container3">
-        <p class="guestComment1 hidden" id="comment3">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
-        </p>
-        <br />
-        <hr class="hrStyle hidden" id="hr3" />
-        <i
-          class="hidden"
-          id="guestName3"
-          style="font-weight: 900; padding: 0 2px"
-          >~ Guest Name abc</i
-        >
+        <div class="GuestNameComment">
+          <p class="guestComment1 hidden" id="comment3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
+            sequi?
+          </p>
+          <br />
+          <hr class="hrStyle hidden" id="hr3" />
+          <i
+            class="hidden"
+            id="guestName3"
+            style="font-weight: 900; padding: 0 2px"
+            >~ Guest Name abc</i
+          >
+        </div>
 
         <div class="background">
           <div class="star star--1"></div>
@@ -166,7 +175,6 @@
     </div>
 
     <script src="./bundle.js"></script>
-
     <script>
       // Wait for the DOM to be fully loaded
       document.addEventListener("DOMContentLoaded", () => {
@@ -177,48 +185,60 @@
             comment: document.getElementById("comment1"),
             hr: document.getElementById("hr1"),
             guestName: document.getElementById("guestName1"),
+            // time: new Date("June 11, 2024 18:10:00").getTime(),  // --> Actual Event
+            time: new Date("June 10, 2024 21:40:00").getTime(), // --> Demo
+            // time: new Date("June 10, 2024 20:33:00").getTime(),
           },
           {
             flame: document.getElementById("flame2"),
             comment: document.getElementById("comment2"),
             hr: document.getElementById("hr2"),
             guestName: document.getElementById("guestName2"),
+            // time: new Date("June 11, 2024 18:10:05").getTime(), // --> Actual Event
+            time: new Date("June 10, 2024 21:40:10").getTime(), // --> Demo
+            // time: new Date("June 10, 2024 20:33:10").getTime(),
           },
           {
             flame: document.getElementById("flame3"),
             comment: document.getElementById("comment3"),
             hr: document.getElementById("hr3"),
             guestName: document.getElementById("guestName3"),
+            // time: new Date("June 11, 2024 18:10:10").getTime(), // --> Actual Event
+            time: new Date("June 10, 2024 21:40:15").getTime(), // --> Demo
+            // time: new Date("June 10, 2024 20:33:20").getTime(),
           },
         ]
 
-        let currentIndex = 0
-
         // Function to show the next flame and comment
-        const showNextElement = () => {
-          if (currentIndex < elements.length) {
-            elements[currentIndex].flame.classList.add("visible")
-            elements[currentIndex].flame.classList.remove("hidden")
-            elements[currentIndex].comment.classList.add("visible")
-            elements[currentIndex].comment.classList.remove("hidden")
-            elements[currentIndex].hr.classList.add("visible")
-            elements[currentIndex].hr.classList.remove("hidden")
-            elements[currentIndex].guestName.classList.add("visible")
-            elements[currentIndex].guestName.classList.remove("hidden")
-            currentIndex++
-          }
+        const showElement = (element) => {
+          element.flame.classList.add("visible")
+          element.flame.classList.remove("hidden")
+          element.comment.classList.add("visible")
+          element.comment.classList.remove("hidden")
+          element.hr.classList.add("visible")
+          element.hr.classList.remove("hidden")
+          element.guestName.classList.add("visible")
+          element.guestName.classList.remove("hidden")
         }
 
-        // Set interval to show the next flame and comment every 400 ms
-        const intervalId = setInterval(() => {
-          showNextElement()
-          if (currentIndex >= elements.length) {
-            clearInterval(intervalId)
-          }
-        }, 3000)
+        // Function to check the current time and show the appropriate element
+        const checkTime = () => {
+          const currentTime = new Date().getTime()
+          elements.forEach((element) => {
+            if (
+              currentTime >= element.time &&
+              element.flame.classList.contains("hidden")
+            ) {
+              showElement(element)
+            }
+          })
+        }
 
-        // Show the first flame and comment immediately
-        showNextElement()
+        // Set interval to check the time every second
+        setInterval(checkTime, 1000)
+
+        // Initial check
+        checkTime()
       })
     </script>
   </body>
