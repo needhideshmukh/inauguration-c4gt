@@ -23,7 +23,7 @@
       </h1>
 
       <!-- --------------------------- -->
-      <!-- <div class="identifierEnter">
+      <div class="identifierEnter">
         <h2>Enter the identifier:</h2>
         <div class="form-group">
           <input
@@ -37,10 +37,10 @@
         <div class="button-container">
           <button id="logButton" class="gradient-button">Submit</button>
         </div>
-      </div> -->
+      </div>
       <!-- --------------------------- -->
 
-      <!-- <div id="eventCreate"></div> -->
+      <div id="eventCreate"></div>
       <div id="eventWitness1"></div>
       <div id="eventWitnessComplete1"></div>
     </div>
@@ -157,9 +157,7 @@
 
       <div class="container2">
         <p class="guestComment1" id="comment3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo dolore
-          sit cupiditate et itaque necessitatibus eum repellendus neque
-          doloribus voluptas.
+
         </p>
         <br />
         <hr class="hrStyle" />
@@ -209,11 +207,27 @@
         // Add a click event listener to the log button
         logButton.addEventListener("click", () => {
           const identifier = newField.value // And this line
+          // console.log("checking global vars here",eventCreate, eventWitness);
+          let eventCreate = window.eventCreate;
+          let eventWitness = window.eventWitness;
+          console.log("checking global vars again here",eventCreate, eventWitness);
+
           submitIdentifier(identifier)
           eventManager()
+          console.log("checking global vars again here",eventCreate, eventWitness);
+
+
+          document.getElementById("comment1").innerText = "EventWitness: " + eventWitness;
+          // document.getElementById("comment2").innerText = "EventWitness: " + eventWitness;
+          // document.getElementById("comment3").innerText = "EventWitness: " + eventWitness;
+
+
         })
       })
 
+
+
+      
       // -------------Comment display
       // document.addEventListener("DOMContentLoaded", () => {
       //   const messageContainer = document.getElementById("message-container")
@@ -240,6 +254,7 @@
       // })
 
       // -------------Comment display
+
     </script>
   </body>
 </html>
