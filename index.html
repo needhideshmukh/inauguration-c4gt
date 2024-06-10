@@ -48,7 +48,7 @@
     <div class="diyas-container">
       <div class="container2">
         <p class="guestComment1" id="comment1">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sequi?
+
         </p>
         <br />
         <hr class="hrStyle" />
@@ -216,8 +216,9 @@
           eventManager()
           console.log("checking global vars again here",eventCreate, eventWitness);
 
+          var comment1 = document.getElementById("eventWitness1").innerText;
 
-          document.getElementById("comment1").innerText = "EventWitness: " + eventWitness;
+          // document.getElementById("comment1").innerText = "EventWitness: " + eventWitness;
           // document.getElementById("comment2").innerText = "EventWitness: " + eventWitness;
           // document.getElementById("comment3").innerText = "EventWitness: " + eventWitness;
 
